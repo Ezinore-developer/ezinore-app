@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>393246385343-nljm18j9g9o97rur8g3i00ub87qu261t.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.393246385343-nljm18j9g9o97rur8g3i00ub87qu261t</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCUR2JeqdNwJfXkQE3vO4c-Dzl3WB4etJE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>393246385343</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.ezinoreApp</string>
+	<key>PROJECT_ID</key>
+	<string>esp-iot-ded8a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>esp-iot-ded8a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:393246385343:ios:70f9584eee5b0e2426520a</string>
+	<key>DATABASE_URL</key>
+	<string>https://esp-iot-ded8a-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>

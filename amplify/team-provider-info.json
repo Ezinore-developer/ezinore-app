@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ezinoreapp-dev-212718-authRole",
+      "UnauthRoleArn": "arn:aws:iam::167290332447:role/amplify-ezinoreapp-dev-212718-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::167290332447:role/amplify-ezinoreapp-dev-212718-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-ezinoreapp-dev-212718-deployment",
+      "UnauthRoleName": "amplify-ezinoreapp-dev-212718-unauthRole",
+      "StackName": "amplify-ezinoreapp-dev-212718",
+      "StackId": "arn:aws:cloudformation:ap-south-1:167290332447:stack/amplify-ezinoreapp-dev-212718/9e3de030-2003-11ee-919b-02165d5d667c",
+      "AmplifyAppId": "d2iok0jg96hr1l"
+    },
+    "categories": {
+      "auth": {
+        "ezinoreappfe529cdf": {}
+      }
+    }
+  }
+}
