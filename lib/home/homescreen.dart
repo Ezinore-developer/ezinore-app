@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +11,28 @@ class HomeScreen extends ConsumerStatefulWidget {
   @override
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
+
+class DoughnutData {
+  DoughnutData({required this.color, required this.x, required this.y});
+  final String x;
+  final double y;
+  final Color color;
+}
+
+final List<DoughnutData> chartData = [
+  DoughnutData(x: 'Panels', y: 60, color: const Color(0xfff4b931)),
+  DoughnutData(x: 'Grid', y: 30, color: const Color(0xfffa6651)),
+  DoughnutData(x: 'Sparko', y: 10, color: const Color(0xff1e96fc)),
+  // DoughnutData(x: 'Others', y: 1, color: Colors.yellow)
+];
+
+dynamic series = [
+  DoughnutSeries<DoughnutData, String>(
+      dataSource: chartData,
+      pointColorMapper: (DoughnutData data, _) => data.color,
+      xValueMapper: (DoughnutData data, _) => data.x,
+      yValueMapper: (DoughnutData data, _) => data.y)
+];
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   late DatabaseReference userRef;
@@ -170,52 +193,70 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                         height: 20.0,
                                       ),
                                       Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
                                         children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Energy Savings",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleSmall,
-                                              ),
-                                              const SizedBox(
-                                                height: 8.0,
-                                              ),
-                                              Text(
-                                                "Estimated Values",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displaySmall,
-                                              ),
-                                              const SizedBox(
-                                                height: 24.0,
-                                              ),
-                                              Text(
-                                                DateFormat.MMMM()
-                                                    .format(DateTime.now()),
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displaySmall,
-                                              ),
-                                              Text(
-                                                '₹$amount',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleMedium!
-                                                    .copyWith(
-                                                        color: Colors.green),
-                                              ),
-                                              Text(
-                                                "Saved",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displaySmall,
-                                              ),
-                                            ],
+                                          Flexible(
+                                            flex: 1,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Energy Savings",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall,
+                                                ),
+                                                const SizedBox(
+                                                  height: 8.0,
+                                                ),
+                                                Text(
+                                                  "Estimated Values",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall,
+                                                ),
+                                                const SizedBox(
+                                                  height: 24.0,
+                                                ),
+                                                Text(
+                                                  DateFormat.MMMM()
+                                                      .format(DateTime.now()),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall,
+                                                ),
+                                                Text(
+                                                  '₹$amount',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleMedium!
+                                                      .copyWith(
+                                                          color: Colors.green),
+                                                ),
+                                                Text(
+                                                  "Saved",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall,
+                                                ),
+                                              ],
+                                            ),
                                           ),
+                                          Flexible(
+                                            flex: 1,
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                    height: 150.0,
+                                                    width: 150.0,
+                                                    child: SfCircularChart(
+                                                      series: series,
+                                                    ))
+                                              ],
+                                            ),
+                                          )
                                         ],
                                       ),
                                       Padding(
