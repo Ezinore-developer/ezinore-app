@@ -1,3 +1,4 @@
+import 'package:ezinore_app/home/booksessionform.dart';
 import 'package:flutter/material.dart';
 
 class ContactScreen extends StatefulWidget {
@@ -118,8 +119,15 @@ class _ContactScreenState extends State<ContactScreen> {
                       height: 20.0,
                     ),
                     ElevatedButton(
-                      style: ElevatedButton.styleFrom(),
-                        onPressed: () {}, child: const Text("Book a session"))
+                        style: ElevatedButton.styleFrom(),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const BookSessionFormScreen()));
+                        },
+                        child: const Text("Book a session"))
                   ]),
             )
           ],
