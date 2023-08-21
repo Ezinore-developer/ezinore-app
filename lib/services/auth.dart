@@ -3,8 +3,9 @@
 
 // import '../models/UserModel.dart';
 
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:amplify_core/amplify_core.dart';
+
+import '../models/UserModel.dart';
 
 class Auth {
   Future<String> registerUser(
@@ -17,33 +18,19 @@ class Auth {
       required String gender,
       required String phoneNo}) async {
     try {
-      final result = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
-
-      final user = result.user;
-
-      await user!.updateDisplayName(fullName);
-
-      await user.reload();
-      // PhoneAuthCredential credential = PhoneAuthCredential.fromFirebaseAuth(
-      // FirebaseAuth.instance.currentUser!);
-
-      await FirebaseDatabase.instance.ref('users/$systemCode').set({
-        'name': fullName,
-        'email': email,
-        'dob': dob,
-        'idProof': idProof,
-        'systemCode': systemCode,
-        'gender': gender,
-        'phoneNo': phoneNo,
-        'data': ''
-      });
-
-      // await user.updatePhoneNumber));
-
+      final item = UserModel(
+          name: fullName,
+          email: email,
+          phoneNo: phoneNo,
+          password: password,
+          gender: gender,
+          dob: dob,
+          idProof: idProof,
+          systemCode: systemCode);
+      await Amplify.DataStore.save(item);
       return "Success";
-    } on FirebaseAuthException catch (e) {
-      return e.message!;
+    } catch (e) {
+      return e.toString();
     }
   }
 }

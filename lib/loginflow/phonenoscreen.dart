@@ -1,6 +1,6 @@
 import 'package:ezinore_app/loginflow/verificationCode.dart';
 import 'package:ezinore_app/providers/userProvider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:intl/intl.dart';
@@ -32,36 +32,36 @@ class _PhoneNoScreenState extends ConsumerState<PhoneNoScreen> {
     _phoneNo.text = ref.read(userProvider).phone!;
   }
 
-  final FirebaseAuth auth = FirebaseAuth.instance;
+  // final FirebaseAuth auth = FirebaseAuth.instance;
 
   void func() async {
     final phoneNumber = "+91${_phoneNo.text.trim()}";
 
-    await auth.verifyPhoneNumber(
-      timeout: const Duration(seconds: 120),
-      phoneNumber: phoneNumber,
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        // Navigate to the next screen, you can decide what to do after successful login.
-        await auth.signInWithCredential(credential);
-        // await auth.signInWithCredential(credential);
-      },
-      verificationFailed: (FirebaseAuthException e) {
-        // Handle verification failed.
-      },
-      codeSent: (String verificationId, int? resendToken) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => VerificationCodeScreen(
-              verificationId: verificationId,
-              onClick: widget.onClick,
-              onClickBack: widget.onClickBack,
-            ),
-          ),
-        );
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
+    // await auth.verifyPhoneNumber(
+    //   timeout: const Duration(seconds: 120),
+    //   phoneNumber: phoneNumber,
+    //   verificationCompleted: (PhoneAuthCredential credential) async {
+    //     // Navigate to the next screen, you can decide what to do after successful login.
+    //     await auth.signInWithCredential(credential);
+    //     // await auth.signInWithCredential(credential);
+    //   },
+    //   verificationFailed: (FirebaseAuthException e) {
+    //     // Handle verification failed.
+    //   },
+    //   codeSent: (String verificationId, int? resendToken) {
+    //     Navigator.pushReplacement(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => VerificationCodeScreen(
+    //           verificationId: verificationId,
+    //           onClick: widget.onClick,
+    //           onClickBack: widget.onClickBack,
+    //         ),
+    //       ),
+    //     );
+    //   },
+    //   codeAutoRetrievalTimeout: (String verificationId) {},
+    // );
   }
 
   @override

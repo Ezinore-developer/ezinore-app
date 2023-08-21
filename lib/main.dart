@@ -1,12 +1,14 @@
-// import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-// import 'package:amplify_flutter/amplify_flutter.dart';
-// import 'package:ezinore_app/amplifyconfiguration.dart';
-import 'package:ezinore_app/home/graph.dart';
+import 'dart:developer';
+
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:ezinore_app/amplifyconfiguration.dart';
+// import 'package:ezinore_app/home/graph.dart';
 import 'package:ezinore_app/home/root.dart';
 import 'package:ezinore_app/loginflow/root.dart';
 // import 'package:ezinore_app/providers/userProvider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // import 'firebase_options.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,16 +23,16 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-// Future<void> _configureAmplify() async {
-//   Amplify.addPlugins([AmplifyAuthCognito()]);
-//   // AmplifyAuthCognito authPlugin = AmplifyAuthCognito();
+Future<void> _configureAmplify() async {
+  Amplify.addPlugins([AmplifyAuthCognito()]);
+  // AmplifyAuthCognito authPlugin = AmplifyAuthCognito();
 
-//   try {
-//     await Amplify.configure(amplifyconfig);
-//   } catch (e) {
-//     log('amplify already confgiured');
-//   }
-// }
+  try {
+    await Amplify.configure(amplifyconfig);
+  } catch (e) {
+    log('amplify already confgiured');
+  }
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -43,7 +45,6 @@ class MyApp extends StatelessWidget {
         tabBarTheme: const TabBarTheme(
             labelColor: Color(0xFF062125),
             indicator: BoxDecoration(
-
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xFF062125))),
         primarySwatch: Colors.amber,
