@@ -1,5 +1,5 @@
 import 'package:ezinore_app/providers/userProvider.dart';
-import 'package:firebase_database/firebase_database.dart';
+// import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -35,13 +35,13 @@ dynamic series = [
 ];
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  late DatabaseReference userRef;
+  // late DatabaseReference userRef;
   // final _tabController = TabController(length: 2, vsync: TickerProvider);
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
-    userRef = FirebaseDatabase.instance
-        .ref('users/${ref.read(userProvider).systemCode}');
+    // userRef = FirebaseDatabase.instance
+    //     .ref('users/${ref.read(userProvider).systemCode}');
   }
 
   final int amount = 1000;

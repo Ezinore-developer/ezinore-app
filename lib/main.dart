@@ -1,8 +1,8 @@
 import 'dart:developer';
 
-import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:ezinore_app/amplifyconfiguration.dart';
+// import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+// import 'package:amplify_flutter/amplify_flutter.dart';
+// import 'package:ezinore_app/amplifyconfiguration.dart';
 // import 'package:ezinore_app/home/graph.dart';
 import 'package:ezinore_app/home/root.dart';
 import 'package:ezinore_app/loginflow/root.dart';
@@ -23,16 +23,16 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-Future<void> _configureAmplify() async {
-  Amplify.addPlugins([AmplifyAuthCognito()]);
-  // AmplifyAuthCognito authPlugin = AmplifyAuthCognito();
+// Future<void> _configureAmplify() async {
+//   Amplify.addPlugins([AmplifyAuthCognito()]);
+//   // AmplifyAuthCognito authPlugin = AmplifyAuthCognito();
 
-  try {
-    await Amplify.configure(amplifyconfig);
-  } catch (e) {
-    log('amplify already confgiured');
-  }
-}
+//   try {
+//     await Amplify.configure(amplifyconfig);
+//   } catch (e) {
+//     log('amplify already confgiured');
+//   }
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

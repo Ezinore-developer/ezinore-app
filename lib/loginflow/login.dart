@@ -58,25 +58,25 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () {
-                    final auth = Auth();
-                    final res = auth.registerUser(
-                      email: ref.read(userProvider).email!,
-                      fullName:
-                          "${ref.read(userProvider).firstName!} ${ref.read(userProvider).lastName!}",
-                      password: ref.read(userProvider).password!,
-                      gender: ref.read(userProvider).gender!,
-                      phoneNo: ref.read(userProvider).phone!,
-                      dob: ref.read(userProvider).dob!,
-                      idProof: ref.read(userProvider).idProof!,
-                      systemCode: ref.read(userProvider).systemCode!,
-                    );
+                    // final auth = Auth();
+                    // final res = auth.registerUser(
+                    //   email: ref.read(userProvider).email!,
+                    //   fullName:
+                    //       "${ref.read(userProvider).firstName!} ${ref.read(userProvider).lastName!}",
+                    //   password: ref.read(userProvider).password!,
+                    //   gender: ref.read(userProvider).gender!,
+                    //   phoneNo: ref.read(userProvider).phone!,
+                    //   dob: ref.read(userProvider).dob!,
+                    //   idProof: ref.read(userProvider).idProof!,
+                    //   systemCode: ref.read(userProvider).systemCode!,
+                    // );
 
 
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(res.toString()),
-                      ),
-                    );
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //   SnackBar(
+                    //     content: Text(res.toString()),
+                    //   ),
+                    // );
                   },
                   child: Text('Next',
                       style: Theme.of(context).textTheme.labelLarge),
