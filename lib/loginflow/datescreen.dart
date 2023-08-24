@@ -84,7 +84,6 @@ class _DateScreenState extends ConsumerState<DateScreen> {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () {
-                    // _date.te/
                     ref.read(userProvider).setDob(dob);
                     widget.onClick();
                   },
