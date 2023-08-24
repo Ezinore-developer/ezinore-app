@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class Auth {
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
+  final _database = FirebaseDatabase.instance;
 
   Future<String> registerUser(
       {required String email,
@@ -11,7 +13,7 @@ class Auth {
       required String password,
       required String gender,
       required String phoneNo,
-      required String dob,
+      required DateTime dob,
       required String idProof,
       required String systemCode}) async {
     try {
@@ -24,13 +26,27 @@ class Auth {
 
       user.reload();
 
+      await _firestore
+          .collection('users')
+          .doc("${user.email}${user.phoneNumber!}")
+          .set({
+        "email": email,
+        "phoneNo": phoneNo,
+        "gender": gender,
+        "dob": dob,
+        "fullName": fullName,
+        "idProof": idProof,
+        "systemCode": systemCode,
+        "password": password,
+      });
+
+      await _database
+          .ref("${user.email}${user.phoneNumber!}")
+          .set({"systemCode": systemCode, "data": {}});
+
       return "Welcome ${fullName.split(" ")[0]}";
     } on FirebaseException catch (e) {
       return e.message!;
     }
   }
-
-  // Future<String> registerUser(){
-
-  // }
 }

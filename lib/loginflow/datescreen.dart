@@ -18,6 +18,7 @@ class DateScreen extends ConsumerStatefulWidget {
 class _DateScreenState extends ConsumerState<DateScreen> {
   final _date = TextEditingController();
   // final _age = TextEditingController();
+  late DateTime dob;
 
   @override
   void initState() {
@@ -71,6 +72,7 @@ class _DateScreenState extends ConsumerState<DateScreen> {
 
                         if (date != null) {
                           _date.text = DateFormat('dd/MM/yyyy').format(date);
+                          dob = date;
                         }
                       },
                       controller: _date,
@@ -83,7 +85,7 @@ class _DateScreenState extends ConsumerState<DateScreen> {
                 ElevatedButton(
                   onPressed: () {
                     // _date.te/
-                    ref.read(userProvider).setDob(_date.text);
+                    ref.read(userProvider).setDob(dob);
                     widget.onClick();
                   },
                   child: Text('Next',

@@ -8,7 +8,7 @@ class User extends ChangeNotifier {
   String? _phone = "";
   String? _password = "";
   String? _address = "";
-  String? _dob = "";
+  DateTime? _dob;
   String? _gender = "";
   String? _idProof = "";
   String? _systemCode = "";
@@ -43,7 +43,7 @@ class User extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setDob(String dob) {
+  void setDob(DateTime dob) {
     _dob = dob;
     notifyListeners();
   }
@@ -69,7 +69,7 @@ class User extends ChangeNotifier {
   String? get email => _email;
   String? get phone => _phone;
   String? get address => _address;
-  String? get dob => _dob;
+  DateTime? get dob => _dob;
   String? get gender => _gender;
   String? get idProof => _idProof;
   String? get systemCode => _systemCode;
