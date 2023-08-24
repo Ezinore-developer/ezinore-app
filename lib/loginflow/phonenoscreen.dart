@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:intl/intl.dart';
 
-// ignore: must_be_immutable
 class PhoneNoScreen extends ConsumerStatefulWidget {
   final VoidCallback onClick;
   final VoidCallback onClickBack;
