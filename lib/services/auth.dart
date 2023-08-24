@@ -1,36 +1,36 @@
-// // import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-// // import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-// // import '../models/UserModel.dart';
+class Auth {
+  final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
 
-// import 'package:amplify_core/amplify_core.dart';
+  Future<String> registerUser(
+      {required String email,
+      required String fullName,
+      required String password,
+      required String gender,
+      required String phoneNo,
+      required String dob,
+      required String idProof,
+      required String systemCode}) async {
+    try {
+      final result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
 
-// import '../models/UserModel.dart';
+      User? user = result.user;
 
-// class Auth {
-//   Future<String> registerUser(
-//       {required String email,
-//       required String fullName,
-//       required String password,
-//       required String dob,
-//       required String idProof,
-//       required String systemCode,
-//       required String gender,
-//       required String phoneNo}) async {
-//     try {
-//       final item = UserModel(
-//           name: fullName,
-//           email: email,
-//           phoneNo: phoneNo,
-//           password: password,
-//           gender: gender,
-//           dob: dob,
-//           idProof: idProof,
-//           systemCode: systemCode);
-//       await Amplify.DataStore.save(item);
-//       return "Success";
-//     } catch (e) {
-//       return e.toString();
-//     }
-//   }
-// }
+      user!.updateDisplayName(fullName);
+
+      user.reload();
+
+      return "Welcome ${fullName.split(" ")[0]}";
+    } on FirebaseException catch (e) {
+      return e.message!;
+    }
+  }
+
+  // Future<String> registerUser(){
+
+  // }
+}

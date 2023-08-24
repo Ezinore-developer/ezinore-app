@@ -4,8 +4,10 @@ import 'dart:developer';
 // import 'package:amplify_flutter/amplify_flutter.dart';
 // import 'package:ezinore_app/amplifyconfiguration.dart';
 // import 'package:ezinore_app/home/graph.dart';
+import 'package:ezinore_app/firebase_options.dart';
 import 'package:ezinore_app/home/root.dart';
 import 'package:ezinore_app/loginflow/root.dart';
+import 'package:firebase_core/firebase_core.dart';
 // import 'package:ezinore_app/providers/userProvider.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_core/firebase_core.dart';
@@ -16,10 +18,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:ezinore_app/amplifyconfiguration.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await _configureAmplify();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const ProviderScope(child: MyApp()));
 }
 

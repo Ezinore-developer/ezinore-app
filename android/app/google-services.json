@@ -1,78 +1,34 @@
 {
   "project_info": {
-    "project_number": "393246385343",
-    "firebase_url": "https://esp-iot-ded8a-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "esp-iot-ded8a",
-    "storage_bucket": "esp-iot-ded8a.appspot.com"
+    "project_number": "89861097951",
+    "project_id": "ezinore-cloud-backend",
+    "storage_bucket": "ezinore-cloud-backend.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:393246385343:android:1b3ac6359f608b8c26520a",
+        "mobilesdk_app_id": "1:89861097951:android:ab7f6e2c292a25be775c6a",
         "android_client_info": {
           "package_name": "com.example.ezinore_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "393246385343-as9d9bpi0u7adk8roio8k9e6u78d5a40.apps.googleusercontent.com",
+          "client_id": "89861097951-hmorr1q158vll8k58ufjlcc5vpnsdqf3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBc98mlnU8WHUUmmdeuMDXWYUGGCKejtxw"
+          "current_key": "AIzaSyA49HFA1IXIBqwYJFCEI6o2YsWAhS9FOhw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "393246385343-as9d9bpi0u7adk8roio8k9e6u78d5a40.apps.googleusercontent.com",
+              "client_id": "89861097951-hmorr1q158vll8k58ufjlcc5vpnsdqf3.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "393246385343-nljm18j9g9o97rur8g3i00ub87qu261t.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.ezinoreApp"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:393246385343:android:ba44691c098b427d26520a",
-        "android_client_info": {
-          "package_name": "com.example.rgb_led_app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "393246385343-as9d9bpi0u7adk8roio8k9e6u78d5a40.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBc98mlnU8WHUUmmdeuMDXWYUGGCKejtxw"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "393246385343-as9d9bpi0u7adk8roio8k9e6u78d5a40.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "393246385343-nljm18j9g9o97rur8g3i00ub87qu261t.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.ezinoreApp"
-              }
             }
           ]
         }
