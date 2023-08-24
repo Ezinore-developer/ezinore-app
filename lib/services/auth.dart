@@ -41,7 +41,7 @@ class Auth {
       });
 
       await _database
-          .ref("${user.email}${user.phoneNumber!}")
+          .ref("users/${user.email}${user.phoneNumber!}")
           .set({"systemCode": systemCode, "data": {}});
 
       return "Welcome ${fullName.split(" ")[0]}";
