@@ -1,4 +1,5 @@
 import 'package:ezinore_app/providers/userProvider.dart';
+import 'package:firebase_database/firebase_database.dart';
 // import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,16 +36,26 @@ dynamic series = [
 ];
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  // late DatabaseReference userRef;
+  late DatabaseReference userRef;
   // final _tabController = TabController(length: 2, vsync: TickerProvider);
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
-    // userRef = FirebaseDatabase.instance
-    //     .ref('users/${ref.read(userProvider).systemCode}');
+    userRef = FirebaseDatabase.instance.ref(
+        'users/${ref.read(userProvider).email}${ref.read(userProvider).phone}');
   }
 
   final int amount = 1000;
+
+  late int temperature;
+  double batteryCapacity = 0;
+
+  void getData() async {
+    userRef.onValue.listen((event) {
+      temperature = event.snapshot.child('temperature').value as int;
+      batteryCapacity = event.snapshot.child('batteryCapacity').value as double;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +76,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   Container(
                     width: double.infinity,
                     height: 20,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                         gradient: LinearGradient(
-                            colors: [Colors.red, Colors.green],
-                            stops: [0.25, 0.85])),
+                            colors: const [Colors.green, Colors.red],
+                            stops: [batteryCapacity, 1 - batteryCapacity])),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -80,7 +91,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
                         Text(
-                          "60%",
+                          "$batteryCapacity",
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall!
@@ -103,7 +114,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
                         Text(
-                          "27°c",
+                          "$temperature",
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall!
