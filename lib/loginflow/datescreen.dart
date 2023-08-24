@@ -76,8 +76,8 @@ class _DateScreenState extends ConsumerState<DateScreen> {
                         }
                       },
                       controller: _date,
-                      // readOnly: true,
-                      // keyboardType: TextInputType.datetime,
+                      readOnly: true,
+                      keyboardType: TextInputType.datetime,
                     ),
                   ],
                 ),
