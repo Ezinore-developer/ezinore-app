@@ -105,16 +105,17 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return const HomeRoot();
-          } else {
-            return const LoginRoot();
-          }
-        },
-      ),
+      // home: StreamBuilder(
+      //   stream: FirebaseAuth.instance.authStateChanges(),
+      //   builder: (context, snapshot) {
+      //     if (snapshot.hasData) {
+      //       return const HomeRoot();
+      //     } else {
+      //       return const LoginRoot();
+      //     }
+      //   },
+      // ),
+      home : const HomeRoot(),
     );
   }
 }

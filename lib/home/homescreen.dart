@@ -45,10 +45,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         'users/${ref.read(userProvider).email}${ref.read(userProvider).phone}');
   }
 
-  final int amount = 1000;
+  final int amountSaved = 1000;
 
-  late int temperature;
-  double batteryCapacity = 0;
+   int temperature = 0;
+  double batteryCapacity = 0.7;
 
   void getData() async {
     userRef.onValue.listen((event) {
@@ -79,7 +79,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                             colors: const [Colors.green, Colors.red],
-                            stops: [batteryCapacity, 1 - batteryCapacity])),
+                            stops: [batteryCapacity, 1.0-batteryCapacity])),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -239,7 +239,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                                       .displaySmall,
                                                 ),
                                                 Text(
-                                                  '₹$amount',
+                                                  '₹$amountSaved',
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .titleMedium!
