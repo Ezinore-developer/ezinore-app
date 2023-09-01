@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:ezinore_app/home/editContactInfoScreen.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -40,7 +41,7 @@ class _AccountScreenState extends State<AccountScreen> {
   }
 
   final _email = TextEditingController();
-  final _password = TextEditingController();
+  final _phoneNumber = TextEditingController();
   final _address = TextEditingController();
 
   @override
@@ -93,7 +94,12 @@ class _AccountScreenState extends State<AccountScreen> {
                               .copyWith(fontSize: 25),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const EditContactInfo()));
+                          },
                           icon: const Icon(
                             Icons.edit,
                             color: Colors.black,
@@ -114,11 +120,11 @@ class _AccountScreenState extends State<AccountScreen> {
                           fillColor: Colors.black.withOpacity(0.1)),
                     ),
                     const SizedBox(height: 20),
-                    Text("Password",
+                    Text("Phone Number",
                         style: Theme.of(context).textTheme.titleSmall),
                     const SizedBox(height: 16),
                     TextField(
-                      controller: _password,
+                      controller: _phoneNumber,
                       decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.black.withOpacity(0.1)),
