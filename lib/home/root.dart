@@ -1,3 +1,4 @@
+import 'package:ezinore_app/home/accountscreen.dart';
 import 'package:ezinore_app/home/contactscreen.dart';
 import 'package:ezinore_app/home/homescreen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class _HomeRootState extends State<HomeRoot> {
   final _pages = [
     const HomeScreen(),
     const ContactScreen(),
-    const HomeScreen()
+    const AccountScreen()
   ];
   final _pageController = PageController();
   int _selectedIndex = 0;
@@ -48,7 +49,7 @@ class _HomeRootState extends State<HomeRoot> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: "Home",
+            label: "Account",
           ),
         ],
       ),
