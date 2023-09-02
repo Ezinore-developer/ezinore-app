@@ -1,6 +1,10 @@
 import 'dart:developer';
 
-import 'package:ezinore_app/home/editContactInfoScreen.dart';
+import 'package:ezinore_app/accountflow/aboutEzinore.dart';
+import 'package:ezinore_app/accountflow/aboutSparko.dart';
+import 'package:ezinore_app/accountflow/editContactInfoScreen.dart';
+import 'package:ezinore_app/accountflow/faq.dart';
+import 'package:ezinore_app/accountflow/maintenanceDiaryScreen.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -17,28 +21,6 @@ class _AccountScreenState extends State<AccountScreen> {
   String idandt = "12/05/23 : 12:00:00 pm";
   int batteryCapacity = 8;
   int generationCapacity = 8;
-
-  @override
-  void initState() {
-    // switch (DateTime.now().hour) {
-    //   case  < 11 && >= 4:
-    //     greeting = "Good Morning";
-    //     break;
-
-    //   case >=11 && <= 15:
-    //     greeting = "Good Evening";
-    //     break;
-
-    //   case > 15 && <=  4 :
-    //     greeting = "Good Night";
-    //     break;
-    //   default:
-    //     greeting = "Good Morning";
-    // }
-
-    log(DateTime.now().hour.toString());
-    super.initState();
-  }
 
   final _email = TextEditingController();
   final _phoneNumber = TextEditingController();
@@ -98,7 +80,8 @@ class _AccountScreenState extends State<AccountScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const EditContactInfo()));
+                                    builder: (context) =>
+                                        const EditContactInfo()));
                           },
                           icon: const Icon(
                             Icons.edit,
@@ -260,7 +243,13 @@ class _AccountScreenState extends State<AccountScreen> {
                         .copyWith(fontSize: 18),
                   ),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const MaintenanceDiaryScreen()));
+                      },
                       icon: Icon(
                         Icons.arrow_forward_ios_outlined,
                         size: 15,
@@ -290,7 +279,12 @@ class _AccountScreenState extends State<AccountScreen> {
                             .copyWith(fontSize: 18),
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const AboutSparko()));
+                          },
                           icon: Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 15,
@@ -313,7 +307,13 @@ class _AccountScreenState extends State<AccountScreen> {
                             .copyWith(fontSize: 18),
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const AboutEzinore()));
+                          },
                           icon: Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 15,
@@ -336,7 +336,10 @@ class _AccountScreenState extends State<AccountScreen> {
                             .copyWith(fontSize: 18),
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => Faq()));
+                          },
                           icon: Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 15,
