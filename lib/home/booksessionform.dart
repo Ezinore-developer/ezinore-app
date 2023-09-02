@@ -135,7 +135,7 @@ class _BookSessionFormScreenState extends State<BookSessionFormScreen> {
                               servicingPrice = 0;
                             }
                             setState(() {
-                              servicing = value!;
+                              servicing = value;
                             });
                           },
                           value: servicing,
