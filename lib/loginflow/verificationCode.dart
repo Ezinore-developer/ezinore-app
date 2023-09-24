@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 // import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // import 'package:intl/intl.dart';
 
@@ -22,29 +21,29 @@ class VerificationCodeScreen extends StatefulWidget {
 
 class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
   // final _age = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
   final List<TextEditingController> _controllers =
       List.generate(6, (index) => TextEditingController());
 
   List<int> otp = [];
 
   Future<void> signInWithOtp() async {
-    final credential = PhoneAuthProvider.credential(
-      verificationId: widget.verificationId,
-      smsCode: otp.join(''),
-    );
+    // final credential = PhoneAuthProvider.credential(
+    //   verificationId: widget.verificationId,
+    //   smsCode: otp.join(''),
+    // );
 
-    try {
-      final result = await _auth.signInWithCredential(credential);
+    // try {
+    //   final result = await _auth.signInWithCredential(credential);
 
-      final user = result.user;
+    //   final user = result.user;
 
-      await user!.updatePhoneNumber(credential);
+    //   await user!.updatePhoneNumber(credential);
 
-      await user.reload();
-    } on FirebaseAuthException catch (e) {
-      log(e.message!);
-    }
+    //   await user.reload();
+    // }  catch (e) {
+    //   log(e.toString());
+    // }
   }
 
   @override
