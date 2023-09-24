@@ -1,5 +1,5 @@
 import 'package:ezinore_app/providers/userProvider.dart';
-import 'package:firebase_database/firebase_database.dart';
+// import 'package:firebase_database/firebase_database.dart';
 // import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,25 +36,25 @@ dynamic series = [
 ];
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  late DatabaseReference userRef;
-  // final _tabController = TabController(length: 2, vsync: TickerProvider);
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
-    userRef = FirebaseDatabase.instance.ref(
-        'users/${ref.read(userProvider).email}${ref.read(userProvider).phone}');
-  }
+  // late DatabaseReference userRef;
+  // // final _tabController = TabController(length: 2, vsync: TickerProvider);
+  // @override
+  // void setState(VoidCallback fn) {
+  //   super.setState(fn);
+  //   userRef = FirebaseDatabase.instance.ref(
+  //       'users/${ref.read(userProvider).email}${ref.read(userProvider).phone}');
+  // }
 
   final int amountSaved = 1000;
 
-   int temperature = 0;
+  int temperature = 0;
   double batteryCapacity = 0.7;
 
   void getData() async {
-    userRef.onValue.listen((event) {
-      temperature = event.snapshot.child('temperature').value as int;
-      batteryCapacity = event.snapshot.child('batteryCapacity').value as double;
-    });
+    // userRef.onValue.listen((event) {
+    //   temperature = event.snapshot.child('temperature').value as int;
+    //   batteryCapacity = event.snapshot.child('batteryCapacity').value as double;
+    // });
   }
 
   @override
@@ -79,7 +79,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     decoration: BoxDecoration(
                         gradient: LinearGradient(
                             colors: const [Colors.green, Colors.red],
-                            stops: [batteryCapacity, 1.0-batteryCapacity])),
+                            stops: [batteryCapacity, 1.0 - batteryCapacity])),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -174,7 +174,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         height: 16.0,
                       ),
                       SizedBox(
-                        height: 400.0,
+                        height: 350.0,
                         width: double.infinity,
                         child: DefaultTabController(
                           length: 2,
@@ -194,7 +194,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                     ]),
                               ),
                               SizedBox(
-                                height: 300,
+                                height: 210,
                                 child: TabBarView(children: [
                                   Column(
                                     crossAxisAlignment:
@@ -203,78 +203,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                       const SizedBox(
                                         height: 20.0,
                                       ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Flexible(
-                                            flex: 1,
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "Energy Savings",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleSmall,
-                                                ),
-                                                const SizedBox(
-                                                  height: 8.0,
-                                                ),
-                                                Text(
-                                                  "Estimated Values",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .displaySmall,
-                                                ),
-                                                const SizedBox(
-                                                  height: 24.0,
-                                                ),
-                                                Text(
-                                                  DateFormat.MMMM()
-                                                      .format(DateTime.now()),
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .displaySmall,
-                                                ),
-                                                Text(
-                                                  '₹$amountSaved',
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleMedium!
-                                                      .copyWith(
-                                                          color: Colors.green),
-                                                ),
-                                                Text(
-                                                  "Saved",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .displaySmall,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Flexible(
-                                            flex: 1,
-                                            child: Column(
-                                              children: [
-                                                SizedBox(
-                                                    height: 150.0,
-                                                    width: 150.0,
-                                                    child: SfCircularChart(
-                                                      series: series,
-                                                    ))
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
+                                      tabsViews(context, amountSaved),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 8.0),
                                         child: Divider(
-                                          color: Colors.white
+                                          color: Colors.black
                                               .withOpacity(0.800000011920929),
                                         ),
                                       ),
@@ -282,7 +216,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   ),
                                   Container(),
                                 ]),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -292,9 +226,88 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white),
+              child: Flex(
+                direction: Axis.horizontal,
+                children: [
+                  Flexible(
+                    flex: 2,
+                    child: Column()),
+                  Flexible(
+                    flex: 1,
+                    child: SizedBox(
+                        height: 150.0,
+                        width: 150.0,
+                        child: SfCircularChart(
+                          series: series,
+                        )),
+                  )
+                ],
+              ),
+            )
           ]),
         ),
       ),
     );
   }
+}
+
+Widget tabsViews(BuildContext context, int amountSaved) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      Flexible(
+        flex: 1,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Energy Savings",
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(
+              height: 8.0,
+            ),
+            Text(
+              "Estimated Values",
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            const SizedBox(
+              height: 24.0,
+            ),
+            Text(
+              DateFormat.MMMM().format(DateTime.now()),
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            Text(
+              '₹$amountSaved',
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(color: Colors.green),
+            ),
+            Text(
+              "Saved",
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+          ],
+        ),
+      ),
+      Flexible(
+        flex: 1,
+        child: SizedBox(
+            height: 150.0,
+            width: 150.0,
+            child: SfCircularChart(
+              series: series,
+            )),
+      )
+    ],
+  );
 }

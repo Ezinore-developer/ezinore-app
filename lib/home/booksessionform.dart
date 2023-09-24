@@ -147,7 +147,7 @@ class _BookSessionFormScreenState extends State<BookSessionFormScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         child: Divider(
                           color: Colors.black.withOpacity(0.1),
-                          thickness: 1.5,
+                          thickness: 1.0,
                         ),
                       ),
                       Text(
